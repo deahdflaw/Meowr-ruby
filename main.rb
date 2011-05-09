@@ -15,7 +15,7 @@ end
 
 get '/:addr' do
   if (redis.get("page:user:#{params[:addr]}:puid") == nil)
-    'Nothing!'
+    404
   else
     erb :page
   end
@@ -49,4 +49,8 @@ end
 
 error 404 do
   erb :error404
+end
+
+error 403 do
+  erb :error403
 end
