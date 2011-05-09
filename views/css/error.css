@@ -1,0 +1,6 @@
+.error { color: red; font-family: trebuchet ms; font-size: 32px; text-align: center; }
+.header { font-family: trebuchet ms; font-size: 28px; color: gray; text-align: center; }
+.dv { font-size: 72px; color: red; margin-top: 230px; }
+a {text-decoration: none; color: gray; }
+a:hover { color: green; }
+body { font-family: trebuchet ms; }

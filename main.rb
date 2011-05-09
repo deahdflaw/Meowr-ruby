@@ -46,3 +46,7 @@ post '/admin/edit' do
   redis.set("page:user:#{Russian.translit(params[:title])}:puid", params[:puid])
   redirect '/'
 end
+
+error 404 do
+  erb :error404
+end
