@@ -1,23 +1,63 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 <%
    redis = Redis.new
    maxid = redis.get("page:user:nextid")
    i = 1
 %>
-	<head>
-        <title>Index</title>
-	</head>
-	<body> <table>
-       <% while i < maxid.to_i do %>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-       <td>
-         <tr><a href="/<%= redis.get("page:user:#{i}:addr") %>"><h3><%= redis.get("page:user:#{i}:title") %></h3></a></tr>
-         <tr><a href="/admin/edit/<%= redis.get("page:user:#{i}:addr") %>" target="_blank">Edit this entry!</a></tr>
-       </td>
-        <%
-           i = i + 1
-           end %>
-        </table>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="description" content="<%= redis.get("core:meta:desc") %>"/>
+		<meta name="keywords" content="<%= redis.get("core:meta:keywords") %>"/>
+		<meta name="owner" content="<%= redis.get("core:author") %>"/>
+		<meta name="author" content="<%= redis.get("core:mail") %>"/>
+		<meta http-equiv="expires" content=""/>
+		<meta http-equiv="charset" content="UTF-8"/>
+		<meta http-equiv="content-language" content="ru"/>
+		<meta name="robots" content="index,follow"/>
+		<meta name="revisit-after" content="4 days"/>
+		<title><%= redis.get("core:title") %></title>
+		<link href="css/basic.css" rel="stylesheet" type="text/css" media="all" />
+	</head>
+
+	<body>
+		<table class="mtable" align="center" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="dsR92" rowspan="3"></td>
+				<td class="menu" colspan="3"><img src="img/logo.png" alt="Elephant logo" height="129" width="206" border="0" />
+				<img src="img/title.png" alt="Ilfant студия дизайна" height="150" width="450" border="0" />
+
+				<td class="menu rmenu text">
+				<a href="/" class="this">Главная страница</a><br />
+				<a href="/about">Все о нас</a><br />
+				<a href="/works">Мы делаем так</a><br />
+				<a href="/contacts">Связаться с нами</a><br />
+				</td>
+
+				</td>
+				<td class="dsR92" rowspan="3"></td>
+			</tr>
+			<tr>
+				<td class="body" colspan="3" valign="top" align="center">
+
+				<div class="tbody">
+                <% while i < maxid.to_i do %>
+                    <a href="/<%= redis.get("page:user:#{i}:addr") %>"><h3><%= redis.get("page:user:#{i}:title") %></h3></a>
+                    <a href="/admin/edit/<%= redis.get("page:user:#{i}:addr") %>" target="_blank"><h6>[Edit this entry!]</h6></a>
+                <% i = i + 1; end %>
+				</div>
+
+				</td>
+			</tr>
+			<tr>
+				<td class="mail-footer"><a href="mailto:<%= redis.get("core:mail") %>" target="_blank">Пишите письма</a></td>
+				<td class="px"></td>
+				<td class="footer" colspan="1"><span class="footer"><%= redis.get("core:footer") %></span></td>
+				<td class="mail-footer"><a href="mailto:<%= redis.get("core:mail") %>" target="_blank">Webmaster's электропочта</a></td>
+			</tr>
+		</table>
+		<p></p>
 	</body>
+
 </html>

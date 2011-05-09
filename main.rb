@@ -2,8 +2,11 @@ require 'sinatra'
 require 'redis'
 require 'erb'
 require 'russian'
+require '/libs/funcs.rb'
+require 'digest/md5'
 
 redis = Redis.new
+var logged
 
 get '/' do
    erb :index
@@ -13,8 +16,27 @@ get '/about' do
 
 end
 
+get '/login' do
+  erb :login
+end
+
+post '/login' do
+  login = params[:login]
+  pass =  Digest::MD5.hexdigest(params[:pass])
+  printf pass
+  if login == redis.get("admin:login") && pass == redis.get("admin:pass")
+    logged = true
+    redis.set("admin:session", true)
+    redis.expire("admin:session", "3600")
+    redirect back
+  else
+    logged = false
+    redirect '/'
+  end
+end
+
 get '/:addr' do
-  if (redis.get("page:user:#{params[:addr]}:puid") == nil)
+  if redis.get("page:user:#{params[:addr]}:puid") == nil
     404
   else
     erb :page
@@ -22,7 +44,11 @@ get '/:addr' do
 end
 
 get '/admin/create' do
-  erb :create
+  if logged
+    erb :create
+  else
+    redirect '/login'
+  end
 end
 
 post '/admin/create' do

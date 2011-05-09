@@ -1,0 +1,11 @@
+.header { font-family: trebuchet ms; font-size: 28px; color: gray; text-align: center; }
+.lbl { font-size: 80px; color: #0085ff; margin-top: 160px; margin-bottom: 10px }
+.butt { font-size: 42px; color: #0085ff; }
+.inp:focus { background-color: #e2e4f9; }
+.inp:hover { border: 2px ridge #d4d4f1
+}
+.inp { border: 2px ridge #e4dbdb
+}
+a {text-decoration: none; color: gray; }
+a:hover { color: green; }
+body { font-family: trebuchet ms; }
