@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%
+   redis = Redis.new
+   maxid = redis.get("page:user:nextid")
+   i = 1
+%>
+	<head>
+        <title>Index</title>
+	</head>
+	<body> <table>
+       <% while i < maxid.to_i do %>
+
+       <td>
+         <tr><a href="/<%= redis.get("page:user:#{i}:addr") %>"><h3><%= redis.get("page:user:#{i}:title") %></h3></a></tr>
+         <tr><a href="/admin/edit/<%= redis.get("page:user:#{i}:addr") %>" target="_blank">Edit this entry!</a></tr>
+       </td>
+        <%
+           i = i + 1
+           end %>
+        </table>
+	</body>
+</html>

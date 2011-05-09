@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%
+   redis = Redis.new
+   puid = redis.get("page:user:#{params[:addr]}:puid")
+%>
+	<head>
+        <title>Site :: <%= redis.get("page:user:#{puid}:title") %></title>
+	</head>
+	<body>
+        <h1><%= redis.get("page:user:#{puid}:title") %></h1>
+        <br />
+        <br />
+        <h3><%= redis.get("page:user:#{puid}:text") %></h3>
+        <br /><br />
+        <a href="/" target="_blank">To Index Page</a>
+	</body>
+</html>

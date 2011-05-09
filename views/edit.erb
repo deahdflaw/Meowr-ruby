@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%
+   redis = Redis.new
+   puid = redis.get("page:user:#{params[:addr]}:puid")
+%>
+	<head>
+        <title>Admin :: Edit page [<%= redis.get("page:user:#{puid}:title") %>]</title>
+	</head>
+	<body>
+	    <form action="/admin/edit" method="post">
+            <span>Title: </span>
+            <input type="text" name="title" size="20" maxlength="40" value="<%= redis.get("page:user:#{puid}:title") %>">
+            <br />
+            <span>Text: </span>
+            <input type="text" name="text" size="20" maxlength="40" value="<%= redis.get("page:user:#{puid}:text") %>">
+            <br />
+            <input type="hidden" name="puid" value="<%= puid %>">
+            <input type="submit" name="submit" value="Edit!">
+        </form>
+		<span></span>
+	</body>
+</html>
