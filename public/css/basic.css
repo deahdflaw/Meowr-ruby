@@ -1,0 +1,28 @@
+.header { font-family: trebuchet ms; font-size: 28px; color: gray; text-align: center; }
+.text { text-align: left; font-family: trebuchet ms; font-size: 20px; color: gray; }
+.tbody { text-align: justify; font-family: trebuchet ms; font-size: 20px; color: gray; margin-top: 45px; margin-bottom: 45px; }
+.this { color: black; font-size: 26px; }
+
+.price-table { margin-top: 40px; margin-bottom:40px; text-align: justify; font-family: trebuchet ms; font-size: 18px; color: gray;}
+.price-table tr:hover { background-color: #F6FAD2; color: black; }
+
+.body { width: 200px; height: auto; }
+.body a { color: #424242; }
+
+.dsR92 { width: 1px; height: 25px; }
+
+.mail-footer  { font-size: 12px; border-top: 1px solid green; border-bottom: 1px solid green; text-align: center; width: 120px; height: 25px; vertical-align: middle; }
+
+.footer span:hover { color: purple; }
+.footer span { border: 0px; }
+.footer  { font-size: 12px; vertical-align: middle; border-top: 1px solid purple; text-align: center; border-bottom: 1px solid purple; }
+.px { width: 1px; }
+
+.menu { border-top: 1px solid purple; border-bottom: 1px solid purple; width: 200px; height: 30px; vertical-align: middle; font-family: "trebuchet ms"; text-align: left; }
+.rmenu { padding-left: 5px;}
+
+.mtable  { margin-right: 5px; margin-bottom: 0; margin-left: 5px; padding-right: 5px; padding-left: 5px; left: auto; width: 970px; height: 119.51%; }
+
+body { font-family: trebuchet ms; }
+a {text-decoration: none; color: gray; }
+a:hover { color: green; }
